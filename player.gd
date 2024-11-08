@@ -8,12 +8,18 @@ extends CharacterBody2D
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	
+	 # Activer ou désactiver la caméra selon si c'est le joueur local ou non
+	if is_multiplayer_authority():
+		# Activer la caméra pour le joueur local
+		$Camera2D.enabled = true
+	else:
+		# Désactiver la caméra pour les autres joueurs
+		$Camera2D.enabled = false
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
-	# Vérifie l'autorité dans un environnement multijoueur.
 	if is_multiplayer_authority():
-		# Obtenir la direction d'entrée et normaliser pour éviter une vitesse trop rapide en diagonale.
+
 		var input_dir = Vector2(
 			Input.get_axis("move_left", "move_right"),
 			Input.get_axis("move_up", "move_down")
@@ -24,7 +30,6 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(input_dir * SPEED, ACCELERATION * delta)
 			$AnimatedSprite2D.animation = "walk"
 			$AnimatedSprite2D.flip_h = input_dir.x < 0  # Inverse le sprite si on va vers la gauche
-			$AnimatedSprite2D.flip_v = input_dir.y < 0  # Inverse le sprite si on va vers la gauche
 
 		else:
 			# Si aucune direction n'est enfoncée, applique une décélération pour arrêter progressivement.
