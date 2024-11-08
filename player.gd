@@ -13,33 +13,25 @@ func _enter_tree() -> void:
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
-
+	# Vérifie l'autorité dans un environnement multijoueur.
 	if is_multiplayer_authority():
-		
-		if not is_on_floor():
-			velocity += get_gravity() * delta
+		# Obtenir la direction d'entrée et normaliser pour éviter une vitesse trop rapide en diagonale.
+		var input_dir = Vector2(
+			Input.get_axis("move_left", "move_right"),
+			Input.get_axis("move_up", "move_down")
+		).normalized()
 
-	# Gérer le saut.
-		if Input.is_action_pressed("jump") and is_on_floor() and not isJumping:
-			velocity.y = JUMP_VELOCITY
-			isJumping = true
-			await get_tree().create_timer(0.1).timeout
-			isJumping = false
-
-	# Obtenir la direction d'entrée et gérer l'accélération/décélération.
-		var direction := Input.get_axis("move_left", "move_right")
-		if direction != 0:
-		# Si une direction est enfoncée, on accélère vers SPEED dans cette direction.
-			velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION * delta)
+		# Si une direction est enfoncée, on accélère vers la vitesse cible dans cette direction.
+		if input_dir != Vector2.ZERO:
+			velocity = velocity.move_toward(input_dir * SPEED, ACCELERATION * delta)
 			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_h = input_dir.x < 0  # Inverse le sprite si on va vers la gauche
+			$AnimatedSprite2D.flip_v = input_dir.y < 0  # Inverse le sprite si on va vers la gauche
+
 		else:
-		# Sinon, on applique la décélération pour ramener la vitesse horizontale vers zéro.
-			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+			# Si aucune direction n'est enfoncée, applique une décélération pour arrêter progressivement.
+			velocity = velocity.move_toward(Vector2.ZERO, DECELERATION * delta)
 			$AnimatedSprite2D.animation = "idle"
-		
-		if velocity.x != 0:
-			$AnimatedSprite2D.flip_h = velocity.x < 0
 
-
-	# Appliquer le mouvement.
-	move_and_slide()
+		# Appliquer la vitesse pour déplacer le personnage.
+		move_and_slide()
