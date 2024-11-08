@@ -2,6 +2,7 @@ extends Node2D
 
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene: PackedScene
+@export var max_player_count_in_game: int
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -14,9 +15,10 @@ func _on_host_button_pressed() -> void:
 	multiplayer.peer_connected.connect(add_player)
 	print(multiplayer.get_instance_id())
 	add_player()
-	$Host_Button.visible = false
-	$Join_Button.visible = false
-
+	$CanvasLayer/Host_Button.visible = false
+	$CanvasLayer/Join_Button.visible = false
+	$CanvasLayer/Label.text = str(multiplayer.get_peers().size() + 1) + "/" + str(max_player_count_in_game)
+	
 # Fonction pour ajouter un joueur
 func add_player(id = 1):
 	var player = player_scene.instantiate()
@@ -42,11 +44,13 @@ func add_player(id = 1):
 func _on_join_button_pressed() -> void:
 	peer.create_client("localhost", 135)
 	multiplayer.multiplayer_peer = peer
-	$Host_Button.visible = false
-	$Join_Button.visible = false
+	$CanvasLayer/Host_Button.visible = false
+	$CanvasLayer/Join_Button.visible = false
 
 func _on_peer_connected(id):
-	print("Joueur connecté : ", id)
+	print("Nombre de joueurs connectés :", multiplayer.get_peers().size() + 1)
+	$CanvasLayer/Label.text = str(multiplayer.get_peers().size() + 1) + "/" + str(max_player_count_in_game)
 
 func _on_peer_disconnected(id):
 	print("Joueur déconnecté : ", id)
+	$CanvasLayer/Label.text = str(multiplayer.get_peers().size() + 1) + "/" + str(max_player_count_in_game)

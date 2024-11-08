@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bsi2titfxo3ys"]
 
-[ext_resource type="Texture2D" uid="uid://bqx2afye1s0jc" path="res://Assets/tileset.png" id="1_rt5ui"]
-[ext_resource type="Texture2D" uid="uid://2nwji7b56st8" path="res://Assets/vegetation.png" id="2_mesfb"]
+[ext_resource type="Texture2D" uid="uid://bqx2afye1s0jc" path="res://Assets/TileSheet/tileset.png" id="1_rt5ui"]
+[ext_resource type="Texture2D" uid="uid://2nwji7b56st8" path="res://Assets/TileSheet/vegetation.png" id="2_mesfb"]
 [ext_resource type="PackedScene" uid="uid://cyfbctrc0xn1d" path="res://Scene/multiplayer.tscn" id="4_aj6hf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_prgj8"]
@@ -89,3 +89,4 @@ tile_set = SubResource("TileSet_pc72i")
 
 [node name="Multiplayer" parent="." instance=ExtResource("4_aj6hf")]
 position = Vector2(16, 92)
+max_player_count_in_game = 5
