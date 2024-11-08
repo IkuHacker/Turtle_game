@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
 @export var SPEED = 300.0  # Vitesse maximale
-@export var JUMP_VELOCITY = -400.0  # Vitesse de saut
 @export var ACCELERATION = 1000.0  # Taux d'accélération
 @export var DECELERATION = 800.0  # Taux de décélération
-var isJumping: bool = false
 
 
 func _enter_tree() -> void:
