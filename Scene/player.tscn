@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwx1tt7w2lpih" path="res://Assets/turtle.png" id="2_aw31d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jadt"]
-size = Vector2(296, 205)
+size = Vector2(296, 221)
 
 [sub_resource type="Animation" id="Animation_xu5gt"]
 resource_name = "walk"
@@ -137,7 +137,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_aw31d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 18.5)
+position = Vector2(-3, 25.5)
 shape = SubResource("RectangleShape2D_4jadt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
