@@ -17,7 +17,7 @@ func _enter_tree() -> void:
 		$Camera2D.enabled = false
 
 func _physics_process(delta: float) -> void:
-	$AnimatedSprite2D.play()
+	$AnimationPlayer.play()
 	if is_multiplayer_authority():
 
 		var input_dir = Vector2(
@@ -28,13 +28,13 @@ func _physics_process(delta: float) -> void:
 		# Si une direction est enfoncée, on accélère vers la vitesse cible dans cette direction.
 		if input_dir != Vector2.ZERO:
 			velocity = velocity.move_toward(input_dir * SPEED, ACCELERATION * delta)
-			$AnimatedSprite2D.animation = "walk"
-			$AnimatedSprite2D.flip_h = input_dir.x < 0  # Inverse le sprite si on va vers la gauche
+			$AnimationPlayer.current_animation = "walk"
+			$Sprite2D.flip_h = input_dir.x > 0  # Inverse le sprite si on va vers la gauche
 
 		else:
 			# Si aucune direction n'est enfoncée, applique une décélération pour arrêter progressivement.
 			velocity = velocity.move_toward(Vector2.ZERO, DECELERATION * delta)
-			$AnimatedSprite2D.animation = "idle"
+			$AnimationPlayer.current_animation = "idle"
 
 		# Appliquer la vitesse pour déplacer le personnage.
 		move_and_slide()

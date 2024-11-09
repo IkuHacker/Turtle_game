@@ -53,4 +53,7 @@ func _on_peer_connected(id):
 
 func _on_peer_disconnected(id):
 	print("Joueur déconnecté : ", id)
+	var player_to_remove = get_node_or_null(str(id))
+	if player_to_remove:
+		player_to_remove.queue_free()  # Supprimer le joueur de la scène
 	$CanvasLayer/Label.text = str(multiplayer.get_peers().size() + 1) + "/" + str(max_player_count_in_game)
