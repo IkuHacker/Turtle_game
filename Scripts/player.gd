@@ -12,9 +12,14 @@ func _enter_tree() -> void:
 	if is_multiplayer_authority():
 		# Activer la caméra pour le joueur local
 		$Camera2D.enabled = true
+		$CollisionShape2D.disabled = false
+
 	else:
 		# Désactiver la caméra pour les autres joueurs
 		$Camera2D.enabled = false
+		$CollisionShape2D.disabled = true
+		
+
 
 func _physics_process(delta: float) -> void:
 	$AnimationPlayer.play()

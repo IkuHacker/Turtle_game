@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwx1tt7w2lpih" path="res://Assets/turtle.png" id="2_aw31d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jadt"]
-size = Vector2(32, 16)
+size = Vector2(296, 205)
 
 [sub_resource type="Animation" id="Animation_xu5gt"]
 resource_name = "walk"
@@ -27,9 +27,9 @@ tracks/1/path = NodePath("Sprite2D:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0333333)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -38,9 +38,9 @@ tracks/2/path = NodePath("Sprite2D:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0333333)
 }
 
 [sub_resource type="Animation" id="Animation_r8fdu"]
@@ -90,9 +90,9 @@ tracks/0/path = NodePath("Sprite2D:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4, 0.8)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0333333, 0.4, 0.8)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -101,9 +101,9 @@ tracks/1/path = NodePath("Sprite2D:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0.085, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4, 0.8)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0333333, 0.4, 0.8)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uw00m"]
@@ -137,6 +137,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_aw31d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 18.5)
 shape = SubResource("RectangleShape2D_4jadt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
