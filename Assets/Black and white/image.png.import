@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b58accw5o8jkb"
-path="res://.godot/imported/King Turtle.png-46a97f958bb5351d3b925aaebceabf5b.ctex"
+uid="uid://dgowjq3yh0cp1"
+path="res://.godot/imported/image.png-129706cd85e51514ab5d1da52d3376b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Turtle/King Turtle.png"
-dest_files=["res://.godot/imported/King Turtle.png-46a97f958bb5351d3b925aaebceabf5b.ctex"]
+source_file="res://Assets/Black and white/image.png"
+dest_files=["res://.godot/imported/image.png-129706cd85e51514ab5d1da52d3376b9.ctex"]
 
 [params]
 
