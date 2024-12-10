@@ -11,9 +11,9 @@ player_scene = ExtResource("2_2aw71")
 _spawnable_scenes = PackedStringArray("res://Scene/player.tscn")
 spawn_path = NodePath("..")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Host_Button" type="Button" parent="CanvasLayer"]
+[node name="Host_Button" type="Button" parent="HUD"]
 offset_left = 24.0
 offset_top = 360.0
 offset_right = 318.0
@@ -21,7 +21,7 @@ offset_bottom = 464.0
 theme_override_font_sizes/font_size = 66
 text = "Host"
 
-[node name="Join_Button" type="Button" parent="CanvasLayer"]
+[node name="Join_Button" type="Button" parent="HUD"]
 offset_left = 24.0
 offset_top = 488.0
 offset_right = 318.0
@@ -29,7 +29,7 @@ offset_bottom = 592.0
 theme_override_font_sizes/font_size = 66
 text = "Join"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="PlayerCount" type="Label" parent="HUD"]
 offset_left = 960.0
 offset_top = 24.0
 offset_right = 1144.0
@@ -38,5 +38,5 @@ theme_override_font_sizes/font_size = 56
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/Host_Button" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Join_Button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="HUD/Host_Button" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="HUD/Join_Button" to="." method="_on_join_button_pressed"]
